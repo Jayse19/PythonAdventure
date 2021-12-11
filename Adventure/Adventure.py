@@ -116,7 +116,7 @@ def choiceAddAnotherTrick():
         choiceContStory()
 
 def choiceContStory():
-    print("")
+    print("c")
 
 
 
