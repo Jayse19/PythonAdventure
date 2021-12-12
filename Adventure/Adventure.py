@@ -162,7 +162,7 @@ def weather():
     print("You wake up the next morning to see a bunch of sunshine and the storm last night felt like it never happened.")
     print("You walk outside the hut, do you want to get back on your raft and swim away or do some exploring?")
     answer = input(">").lower()
-    if "r" or "s" in answer:
+    if "r" in answer:
         print("You get on your raft and go out into the ocean. After 3 days you see nothing and die of starvation/dehydration.")
         gameOver()
     else:
@@ -192,7 +192,8 @@ def finalDestination():
     gameOver()
 
 def xMarksTheSpot():
-    print("You follow " + pet.name + " as they guide you up the mountain. Suddenly, " + pet.name + " starts doing all the " + pet.printTricks)
+    print("You follow " + pet.name + " as they guide you up the mountain. Suddenly, " + pet.name + " starts doing all the tricks" )
+    pet.printTricks()
     print("You stand there confused and then " + pet.name + " starts digging, still clearly very excited. You begin to dig with " + pet.name + ".")
     print("After a couple hours of continuous digging, you pull out a treasure chest!")
     print("You pull it out of the ground and " + pet.name + "sits next to you. You see it has a 4 combo lock on it. You put in 4 random numbers and try to open the chest but nothing happens")
@@ -205,17 +206,18 @@ def openChest():
 def guessNumbers():
     print("Put in the first number")
     guessOne = input(">")
-    chosenNumbers.addNumber()
+    chosenNumbers.addNumber(guessOne)
     print("Put in the second number")
     guessTwo = input(">")
-    chosenNumbers.addNumber()
+    chosenNumbers.addNumber(guessTwo)
     print("Put in the third number")
     guessThree = input(">")
-    chosenNumbers.addNumber()
+    chosenNumbers.addNumber(guessThree)
     print("Put in the last number")
     guessFour = input(">")
-    chosenNumbers.addNumber()
+    chosenNumbers.addNumber(guessFour)
     comboAddition = map(addition, chosenNumbers.numbers)
+    print(comboAddition)
     if comboAddition != correctCombo:
         openChest()
     else:
