@@ -27,7 +27,7 @@ def choiceA():
 
 
 def choiceAA():
-    print("You lay down and fall asleep. However, you laid down right on shore and you drown from the ocean")
+    print("You lay down and fall asleep. However, you laid down right on shore and you drown from the ocean's waves")
     gameOver()
 
 def choiceAB():
@@ -50,25 +50,49 @@ class Animal:
         print("You trained " + pet.name + " to: " + ", ".join(self.tricks))
 
 class Shelter:
-    def __init__ (self, history, walls):
-        self.history = print("You read the paper on the wall and it says that this shelter was built in 1682 by pirates who inhabited the island. They built the shelter to protect themselves from the harsh whether.")
-        self.walls = print("You exam the walls. They're made of old sticks and tied together with strong rope that you've never seen before.")
+    def printHistory(self):
+        print("You go to the paper on the wall. It's really hard to make out what it says but you decipher it to say: this shelter was built in 1682 by pirates who inhabited the island. They built the shelter to protect themselves from the harsh whether.")
+    def printWalls(self):
+        print("You exam the walls. They're made of old sticks and are tied together with a strong rope that you've never seen before.")
 
 pet = Animal("", [])
+shelter = Shelter()
 
 def choiceABA():
     print("You go into the shelther and see a small piece of paper on the wall, a small and almost broken bed, and a small window. There is sunlight peaking through everywhere. Do you want to exam the walls or the paper?")
     answer = input(">").lower()
     if "w" in answer:
-        choiceABAA()
+        choiceWalls()
     else:
-        choiceABAB()
+        choicePaper()
 
-def choiceABAA():
-    print("")
+def choiceWalls():
+    shelter.printWalls()
+    print("\nAfter examining the walls, you take a step back. Would you like to read what the paper says now?")
+    answer = input(">").lower()
+    if "y" in answer:
+        choicePaper()
+    else:
+        choiceBed()
 
-def choiceABAB():
-    print("")
+def choicePaper():
+    shelter.printHistory()
+    print("\nAfter reading the peice of paper, you're extremly intrugied and interested about the island now. However, you're very tired and you should get some rest. Would you like to go to bed?")
+    answer = input(">").lower()
+    if "y" in answer:
+        choiceBed()
+    else:
+        print("You go back outside of the shelther and start walking around. You walk for a couple hours and eventually pass out. A great storm comes over and magically kills you.")
+        gameOver()
+
+def choiceBed():
+    print("You lay down on the broken bed but it supports your body weight.")
+    if pet.name != "":
+        print(pet.name + " lays down next to you and you both fall asleep.")
+    else:
+        print("You eventually fall asleep.")
+    print("You wake up in the middle of the night to hearing a crazy storm. Surprisingly, no part of the storm is seeping into the shelter.")
+
 
 def choiceABB():
     print("You choose not to go to the shelther, you keep walking around the island and you see a bunch of palm trees, some hills, a little bit of grass but mainly sand. You go towards one of the mountains and something is rattling in the bushes. Do you inspect the bush or run away?")
@@ -96,7 +120,7 @@ def choicePetTricks():
     answer = input(">").lower()
     pet.addTrick(answer)
     pet.printTricks()
-    print("Would you like to train " + pet.name + "another trick?")
+    print("Would you like to train " + pet.name + " another trick?")
     newAnswer = input(">").lower()
     if "y" in newAnswer:
         choiceAddAnotherTrick()
@@ -108,7 +132,7 @@ def choiceAddAnotherTrick():
     answer = input(">").lower()
     pet.addTrick(answer)
     pet.printTricks()
-    print("Would you like to train " + pet.name + "another trick?")
+    print("Would you like to train " + pet.name + " another trick?")
     newAnswer = input(">").lower()
     if "y" in newAnswer:
         choiceAddAnotherTrick()
@@ -116,7 +140,8 @@ def choiceAddAnotherTrick():
         choiceContStory()
 
 def choiceContStory():
-    print("c")
+    print("You begin to walk back from where you started now with your new companion. You go back and see the shelter again. It's been a very long day and the sun is starting to set so you go into the shelther that you passed by earlier.")
+    choiceABA()
 
 
 
